@@ -16,12 +16,14 @@ b = 99
 v = 100000000
 meter = 0
 days = 0
-while True:
-    days += 1
-    meter += a
-    if meter >= v:
-        break
-    meter -= b
-    
+# while True:
+#     days += 1
+#     meter += a
+#     if meter >= v:
+#         break
+#     meter -= b
 
-print(days)
+# print(days)
+
+days = (v-b)/(a-b)
+print(int(days) if days == int(days) else int(days)+1)
