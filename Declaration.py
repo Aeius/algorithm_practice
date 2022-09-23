@@ -105,3 +105,19 @@ report = ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
 # report = ["ryan con", "ryan con", "ryan con", "ryan con"]
 k = 2
 print(solution(id_list, report, k))
+
+
+# 모범답안
+def solution(id_list, report, k):
+    answer = [0] * len(id_list)    
+    reports = {x : 0 for x in id_list}
+    # reports = {muzi : 0, frodo: 0 ...}
+    for r in set(report):
+        reports[r.split()[1]] += 1
+        # reports["frodo"] += 1  
+        # >> reports = {"muzi": 0 , "frodo": 2, "apeach": 1, "neo": 2}
+    for r in set(report):
+        if reports[r.split()[1]] >= k:
+            answer[id_list.index(r.split()[0])] += 1
+
+    return answer
