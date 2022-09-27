@@ -165,10 +165,8 @@ def solution(survey, choices):
     for i in range(len(survey)):
         #survey[i][0] # 비동의 관련 > A 의 인덱스 번호
         index1 = types.index(survey[i][0])
-        print(index1)
         #survey[i][1] # 동의 관련 > N
         index2 = types.index(survey[i][1])
-        print(index2)
         if choices[i] == 1:
             scores[index1] += 3
         if choices[i] == 2:
@@ -183,6 +181,11 @@ def solution(survey, choices):
             scores[index2] += 2
         if choices[i] == 7:
             scores[index2] += 3
+        # if choices[i] - 4 > 0:  # 5, 6 ,7
+        #     scores[types.index(survey[i][0])] += choices[i] - 4
+        # elif choices[i] - 4 < 0: # 1, 2, 3
+        #     scores[types.index(survey[i][1])] += 4 - choices[i]
+    print(scores)
     for idx in range(len(scores)):
         if idx % 2 == 0:
             if scores[idx] >= scores[idx+1]:
@@ -194,3 +197,4 @@ def solution(survey, choices):
 
 survey = ["AN", "CF", "MJ", "RT", "NA"]
 choices = [5, 3, 2, 7, 5]
+print(solution(survey, choices))
