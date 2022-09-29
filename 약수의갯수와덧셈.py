@@ -49,3 +49,17 @@ def solution(left, right):
     return answer
 
 print(solution(24, 27))
+
+# 약수가 홀수개인 모든 수는 제곱수
+# i**0.5 는 i의 제곱근을 구하는 식 ex) 4의 제곱근은 2
+# i 가 10 일 경우 **0.5 를하면 3.1622... 이 나오기때문에
+# int()안에 넣으면 그냥 소숫점은 전부 날아가기 떄문에 else 부분으로 가며
+# 제곱근이 정수가 아닌 수는 약수가 짝수개이며 제곱근이 정수인 수는 약수가 홀수개
+def solution(left, right):
+    answer = 0
+    for i in range(left,right+1):
+        if int(i**0.5)==i**0.5:
+            answer -= i
+        else:
+            answer += i
+    return answer
