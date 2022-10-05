@@ -111,6 +111,7 @@ def solution(new_id):
             new_id = new_id.replace(new_id[i], chr(ord(v) + 32))
     
     # 2단계 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거합니다.
+    # if c.isalpha() or c.isdigit() or c in ['-', '_', '.']:
     for i in new_id:
         if i not in s_text:
             new_id = new_id.replace(i, "")
@@ -141,3 +142,17 @@ def solution(new_id):
     return new_id
 
 print(solution("z-+.^."))
+
+# 정규표현식을 이용한 답안
+import re
+
+def solution(new_id):
+    st = new_id
+    st = st.lower()
+    st = re.sub('[^a-z0-9\-_.]', '', st)
+    st = re.sub('\.+', '.', st)
+    st = re.sub('^[.]|[.]$', '', st)
+    st = 'a' if len(st) == 0 else st[:15]
+    st = re.sub('^[.]|[.]$', '', st)
+    st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
+    return st
