@@ -106,6 +106,7 @@ def solution(new_id):
     s_text = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
               "-", "_", ".","1","2","3","4","5","6","7","8","9","0"]
     # 1단계 대문자 소문자로 치환
+    #  new_id = new_id.lower()
     for i,v in enumerate(new_id):
         if ord(v) >= 65 and ord(v) <= 90:
             new_id = new_id.replace(new_id[i], chr(ord(v) + 32))
