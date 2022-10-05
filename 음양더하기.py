@@ -27,7 +27,7 @@ signs가 [false,false,true] 이므로, 실제 수들의 값은 각각 -1, -2, 3�
 def solution(absolutes, signs):
     answer = 0
     for i,v in enumerate(absolutes):
-        if signs[i] == true:
+        if signs[i] == True:
             answer += v
         else:
             answer -= v
