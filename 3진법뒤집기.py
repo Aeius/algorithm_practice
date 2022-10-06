@@ -30,10 +30,21 @@ def solution(n):
     while(n > 0):
         trit += str(n % 3)
         n = int(n / 3)
-    
     for i,v in enumerate(trit):
         answer += pow(3, (len(trit) - 1 - i)) * int(v)
         
+    return answer
+
+# 제곱수 구하는 방법 pow(n,m) n의 m승
+# n진법 수 계산 시 10진수를 n 을 나눈 나머지들을 모아서 역순으로 정렬하면 해당 n진수가 된다.
+
+def solution(n):
+    tmp = ''
+    while n:
+        tmp += str(n % 3)
+        n = n // 3
+
+    answer = int(tmp, 3) # tmp를 3진수로 바꿔줌 int(숫자,바꿀진수)
     return answer
 
 print(solution(45))
