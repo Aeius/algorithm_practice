@@ -26,3 +26,10 @@ def solution(a, b):
     for i in range(len(a)):
         answer += a[i] * b[i]
     return answer
+
+# zip을 이용해서 리스트 두개를 한번에 호출하는 방법
+def solution(a, b):
+    answer = 0
+    for i, j in zip(a, b):
+        answer += i * j
+    return answer
