@@ -69,12 +69,14 @@ def solution(numbers, hand):
             answer += "R"
             right = keypad[num]
         else :
-            left_dis = abs(keypad[num][0] - left[0]) + abs(keypad[num][1] - left[1])
-            right_dis = abs(keypad[num][0] - right[0]) + abs(keypad[num][1] - right[1])
-            #  # 좌표 거리 계산해주기
-            # for a, b, c in zip(left_s, right_s, now):
-            #     left_d += abs(a-c)
-            #     right_d += abs(b-c)
+            # left_dis = abs(keypad[num][0] - left[0]) + abs(keypad[num][1] - left[1])
+            # right_dis = abs(keypad[num][0] - right[0]) + abs(keypad[num][1] - right[1])
+             # 좌표 거리 계산해주기
+            left_dis = 0
+            right_dis = 0
+            for a, b, c in zip(left, right, keypad[num]):
+                left_dis += abs(a-c)
+                right_dis += abs(b-c)
             
             if left_dis < right_dis:
                 answer += "L"
