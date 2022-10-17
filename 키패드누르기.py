@@ -54,5 +54,42 @@ numbers                         	hand	    result
 
 def solution(numbers, hand):
     answer = ''
-    keypad = [[0 for j in range(3)] for i in range(4)]
+    keypad = {1: [0, 0], 2: [0, 1], 3: [0, 2],
+              4: [1, 0], 5: [1, 1], 6: [1, 2],
+              7: [2, 0], 8: [2, 1], 9: [2, 2],
+              '*':[3, 0], 0: [3, 1], '#': [3, 2]}
+    left = keypad['*']
+    right = keypad['#']
+    
+    for num in numbers:
+        if num in [1,4,7]:
+            answer += "L"
+            left = keypad[num]
+        elif num in [3,6,9]:
+            answer += "R"
+            right = keypad[num]
+        else :
+            left_dis = abs(keypad[num][0] - left[0]) + abs(keypad[num][1] - left[1])
+            right_dis = abs(keypad[num][0] - right[0]) + abs(keypad[num][1] - right[1])
+            
+            if left_dis < right_dis:
+                answer += "L"
+                left = keypad[num]
+                
+            elif left_dis > right_dis:
+                answer += "R"
+                right = keypad[num]
+                
+            else :
+                if hand == "right":
+                    answer += "R"
+                    right = keypad[num]
+                else:
+                    answer += "L"
+                    left = keypad[num]
+    
     return answer
+
+numbers=[1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5]	
+hand = "right"
+print(solution(numbers,hand))
