@@ -28,7 +28,7 @@ participant	                                        completion	                 
 예제 #3
 "mislav"는 참여자 명단에는 두 명이 있지만, 완주자 명단에는 한 명밖에 없기 때문에 한명은 완주하지 못했습니다.
 '''
-
+# 단순히 정렬 후 각각의 값 비교하고 맨마지막 값이 탈락자 일 경우 pop으로 꺼내서 return
 def solution(participant, completion):
     participant.sort()
     completion.sort()
@@ -36,3 +36,24 @@ def solution(participant, completion):
         if p != c:
             return p
     return participant.pop()
+
+
+# hash 를 이용하여 값 계산
+def solution(participant, completion):
+    hashDict = {}
+    sumHash = 0
+    
+    # 1. Hash : Participant의 dictionary 만들기
+    # 2. Participant의 sum(hash) 구하기
+    for part in participant:
+        hashDict[hash(part)] = part
+        sumHash += hash(part)
+    
+    # 3. completion의 sum(hash) 빼기
+    for comp in completion:
+        sumHash -= hash(comp)
+    
+    # 4. 남은 값이 완주하지 못한 선수의 hash 값이 된다
+
+    return hashDict[sumHash]
+출처: https://coding-grandpa.tistory.com/85 [개발자로 취직하기:티스토리]
