@@ -30,9 +30,9 @@ participant	                                        completion	                 
 '''
 
 def solution(participant, completion):
-    answer = ''
-    for i in participant:
-        if participant.count(i) > 1:
-            if i not in completion:
-                answer = i
-    return answer
+    participant.sort()
+    completion.sort()
+    for p, c in zip(participant, completion):
+        if p != c:
+            return p
+    return participant.pop()
