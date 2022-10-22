@@ -56,4 +56,10 @@ def solution(participant, completion):
     # 4. 남은 값이 완주하지 못한 선수의 hash 값이 된다
 
     return hashDict[sumHash]
-출처: https://coding-grandpa.tistory.com/85 [개발자로 취직하기:티스토리]
+
+# collections 객체를 이용한 풀이
+import collections
+
+def solution(participant, completion):
+    answer = collections.Counter(participant) - collections.Counter(completion)
+    return list(answer.keys())[0]
