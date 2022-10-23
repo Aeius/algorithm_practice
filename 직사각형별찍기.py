@@ -24,4 +24,7 @@ for i in range(b):
         answer += "*"
         if j == a - 1:
             answer += '\n'
+
+# 한줄짜리            
+answer = ('*'*a +'\n')*b
 print(answer)
