@@ -19,4 +19,7 @@ def solution(x, n):
     for i in range(1, n+1):
         answer.append(x * i)
     return answer
+
+def solution(x, n):
+    return [i for i in range(x, x*(n+1), x)]
     
