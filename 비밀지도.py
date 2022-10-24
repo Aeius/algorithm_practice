@@ -36,12 +36,17 @@ arr2	    [27 ,56, 19, 14, 14, 10]
 '''
 def solution(n, arr1, arr2):
     answer = []
-    for i, j in zip(arr1,arr2):
-        for m in range(n):
-            if bin(i)[m] != bin(j)[m]:
-                bin(i)[m] = 1
-                bin(j)[m] = 1
-                
-                
-                
+    
+    for i in range(n):
+        tmp = bin(arr1[i] | arr2[i])
+        # tmp결과 ex) '0b1101'
+        tmp = tmp[2:].zfill(n)
+        # tmp결과 ex) '01101'
+        tmp = tmp.replace('1','#').replace('0',' ')
+        # tmp결과 ex) ' ## #'
+        answer.append(tmp)
+# (1) or 비트 연산을 하고, 2진법 숫자로 바꿔준다. (or연산은 | , xor연산은 ^, and연산은 & 라고 한다.)
+# (2) 2진법( ex) '0b1101')의 앞에 2개를 제거하고, zfill을 사용해서 앞에 0이 올 수 있도록 한다. (n=5 일떄, 11111은 문제 없으나 글자 수가 n이 안되는 1111은 앞에 0으로 채워줘야 한다. zfill(n)을 하면 n만큼 부족한 부분을 앞에 0으로 채워준다.)
+# (3) 1을 #으로, 0을 공백으로 치환한다.
+    
     return answer
